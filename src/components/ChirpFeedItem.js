@@ -8,7 +8,6 @@ const ChirpFeedItem = ({chirp}) => {
     console.log(chirp)
   }, [])
   
-
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp);
     return date.toLocaleString();
