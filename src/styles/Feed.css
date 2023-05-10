@@ -1,9 +1,5 @@
 #feed-inner-container {
     width: 50vw;
     box-sizing: border-box;
-    overflow-y: scroll;
-}
-
-#feed-inner-container::-webkit-scrollbar {
-    width: 0;
+    background-color: lightslategray;
 }

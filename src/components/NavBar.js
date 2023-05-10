@@ -8,6 +8,7 @@ const NavBar = () => {
 
   return (
     <div id="nav-inner-container">
+      <h1>ChirpHub</h1>
       <Link 
         to="/" 
         className={location.pathname === "/" 

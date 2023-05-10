@@ -1,0 +1,50 @@
+#chirp-feed-item-container {
+    width: 86%;
+    margin-left: 7%;
+    margin-bottom: 30px;
+    background-color: aqua;
+}
+
+#chirp-feed-item-container .user-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* background-color: green; */
+}
+
+.user-info .avatar {
+    margin: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.user-info-text .display-name {
+    width: 500px;
+    /* background-color: orange; */
+}
+
+.user-info-text .timestamp {
+    width: 500px;
+    /* background-color: red; */
+}
+
+
+.main .chirp-image {
+    width: 80%;
+    margin-left: 10%;
+    height: auto;
+}
+
+.main .chirp-text {
+    width: 80%;
+    margin-left: 10%;
+}
+
+
+#chirp-feed-item-container .bottom {
+    background-color: pink;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
