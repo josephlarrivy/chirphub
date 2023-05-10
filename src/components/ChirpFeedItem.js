@@ -7,6 +7,7 @@ const ChirpFeedItem = ({chirp}) => {
   useEffect(() => {
     console.log(chirp)
   }, [])
+  
 
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp);
