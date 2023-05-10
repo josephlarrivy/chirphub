@@ -20,7 +20,7 @@ const fakeChirps = [
         "text": "Hello, world!",
         "image": "https://p.kindpng.com/picc/s/114-1144654_super-mario-world-yoshi-egg-hd-png-download.png",
         "likes": 10,
-        "retweets": 5,
+        "rechirps": 5,
         "comments": 2
     },
     {
@@ -32,7 +32,7 @@ const fakeChirps = [
         "text": "Hello, world!",
         "image": "https://p.kindpng.com/picc/s/114-1144654_super-mario-world-yoshi-egg-hd-png-download.png",
         "likes": 10,
-        "retweets": 5,
+        "rechirps": 5,
         "comments": 2
     },
     {
@@ -44,7 +44,7 @@ const fakeChirps = [
         "text": "Hello, world!",
         "image": "https://p.kindpng.com/picc/s/114-1144654_super-mario-world-yoshi-egg-hd-png-download.png",
         "likes": 10,
-        "retweets": 5,
+        "rechirps": 5,
         "comments": 2
     }
 ]

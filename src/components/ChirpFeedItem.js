@@ -5,7 +5,7 @@ import '../styles/ChirpFeedItem.css'
 const ChirpFeedItem = ({chirp}) => {
 
   useEffect(() => {
-    console.log(chirp)
+    // console.log(chirp)
   }, [])
   
   function formatTimestamp(timestamp) {

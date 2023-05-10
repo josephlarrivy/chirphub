@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import '../styles/Feed.css'
 import fakeChirps from "../fake-data/fake-chirps";
 import ChirpFeedItem from "./ChirpFeedItem";
+import PostChirpForm from "../forms/PostChirpForm";
 
 const Feed = () => {
 
@@ -19,6 +20,9 @@ const Feed = () => {
 
   return (
     <div id="feed-inner-container">
+      <div id="post-chirp-form-container">
+        <PostChirpForm />
+      </div>
       {chirps && chirps.map(chirp => {
         return(
           <ChirpFeedItem 
