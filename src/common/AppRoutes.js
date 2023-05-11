@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Feed from "../components/Feed";
 import NavBar from "../components/NavBar";
+import LoginForm from "../forms/LoginForm";
 import RegisterForm from "../forms/RegisterForm";
 
 
@@ -22,6 +23,9 @@ const AppRoutes = () => {
             />
             <Route exact path="/register"
               element={<RegisterForm />}
+            />
+            <Route exact path="/login"
+              element={<LoginForm />}
             />
           </Routes>
         </div>

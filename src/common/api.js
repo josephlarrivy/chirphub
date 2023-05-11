@@ -29,6 +29,12 @@ class ApiRequest {
     )
   }
 
+  static async login(data) {
+    return (
+      await this.makeRequest('POST', '/login', null, data)
+    )
+  }
+
   static async postChirp(formData) {
     const data = formData;
     return (

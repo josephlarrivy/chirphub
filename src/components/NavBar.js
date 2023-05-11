@@ -63,6 +63,12 @@ const NavBar = () => {
           ? "nav-item active"
           : "nav-item"
         }>Register</Link>
+      <Link
+        to="/login"
+        className={location.pathname === "/login"
+          ? "nav-item active"
+          : "nav-item"
+        }>Log In</Link>
     </div>
   );
 }
