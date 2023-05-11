@@ -62,17 +62,18 @@
 
 .bottom #likes-count-container {
     /* background-color: aqua; */
-    width: 32%;
+    margin-left: 5%;
+    width: 31%;
     display: flex;
 }
 .bottom #rechirps-count-container {
     /* background-color: pink; */
-    width: 32%;
+    width: 31%;
     display: flex;
 }
 .bottom #comments-count-container {
     /* background-color: aqua; */
-    width: 32%;
+    width: 31%;
     display: flex;
 }
 
