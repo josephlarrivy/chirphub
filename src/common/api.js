@@ -40,6 +40,13 @@ class ApiRequest {
       await this.makeRequest('post', '/postChirp', null, data)
     ) 
   }
+
+  static async addTag(data) {
+    console.log(data)
+    return (
+      await this.makeRequest('post', '/addTag', null, data)
+    )
+  }
 }
 
 export default ApiRequest;

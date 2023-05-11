@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ApiRequest from "../common/api";
 import useLocalStorage from "../hooks/useLocalStorage";
 
@@ -6,6 +7,7 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
+  const navigate = useNavigate()
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -16,6 +18,7 @@ const LoginForm = () => {
     if (response.status === 200) {
       setTokenValue(response.data.token)
     }
+    // navigate('/')
   };
 
   return (

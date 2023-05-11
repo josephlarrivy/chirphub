@@ -8,14 +8,15 @@ import '../styles/PostChirpForm.css'
 const PostChirpForm = () => {
 
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage("token");
+  const [chirpId, setChirpId, removeChirpId, getChirpId, getDecodedChirpId] = useLocalStorage("chirpId");
   const navigate = useNavigate()
   const [currentUserInfo, setCurrentUserInfo] = useState(null)
-  const [postTextInput, setPostTextInput] = useState('')
   const [postImageUrlInput, setPostImageUrlInput] = useState('')
+  const [postTextInput, setPostTextInput] = useState('')
 
+  
   useEffect(() => {
     const userInfo = getDecodedToken()
-    // console.log(userInfo)
     setCurrentUserInfo({ ...userInfo })
   }, [])
 
@@ -24,15 +25,17 @@ const PostChirpForm = () => {
     return currentTime.toLocaleString();
   }
 
+  const handlePostImageUrlInputChange = (event) => {
+    const value = event.target.value;
+    setPostImageUrlInput(value)
+  }
+
   const handlePostTextInputChange = (event) => {
     const value = event.target.value;
     setPostTextInput(value);
   };
 
-  const handlePostImageUrlInputChange = (event) => {
-    const value = event.target.value;
-    setPostImageUrlInput(value)
-  }
+  
 
   const submitChirp = async () => {
     const currentTime = new Date();
@@ -42,11 +45,12 @@ const PostChirpForm = () => {
     const text = postTextInput;
     const image = postImageUrlInput;
 
-    const response = await ApiRequest.postChirp(
-      {user_id, timestamp, text, image}
-    )
-    console.log(response)
-    
+    const chirpResponse = await ApiRequest.postChirp(
+      {user_id, timestamp, text, image}).then()
+    // console.log(chirpResponse.data.chirp_id)
+    setChirpId(chirpResponse.data.chirp_id)
+
+    navigate("/addTagsToChirpForm")
   }
 
   if (token && currentUserInfo) {
@@ -63,18 +67,19 @@ const PostChirpForm = () => {
           </div>
         </div>
         <div className="chirp-form-main">
+          <p>image url</p>
           <input
             id="chirp-form-url-input"
             type='text'
-            value={postTextInput}
-            onChange={handlePostTextInputChange}>
+            value={postImageUrlInput}
+            onChange={handlePostImageUrlInputChange}>
           </input>
-          <br></br>
+          <p>chirp text</p>
           <input
             id="chirp-form-text-input"
             type='text'
-            value={postImageUrlInput}
-            onChange={handlePostImageUrlInputChange}>
+            value={postTextInput}
+            onChange={handlePostTextInputChange}>
           </input>
         </div>
         <div className="chirp-form-bottom">

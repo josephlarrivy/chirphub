@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChromePicker } from "react-color";
+import { useNavigate } from "react-router-dom";
 import ApiRequest from "../common/api";
 import useLocalStorage from "../hooks/useLocalStorage";
 
@@ -10,6 +11,7 @@ const RegisterForm = () => {
   const [avatarColor, setAvatarColor] = useState("#000000");
   const [password, setPassword] = useState("");
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
+  const navigate = useNavigate()
 
 
   const handleSubmit = async (event) => {
@@ -23,6 +25,7 @@ const RegisterForm = () => {
     if (response.status === 200) {
       setTokenValue(response.data.token)
     }
+    // navigate('/')
   };
 
   const handleColorChange = (color) => {
