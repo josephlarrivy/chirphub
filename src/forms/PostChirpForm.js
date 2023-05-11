@@ -18,6 +18,7 @@ const PostChirpForm = () => {
   useEffect(() => {
     const userInfo = getDecodedToken()
     setCurrentUserInfo({ ...userInfo })
+    removeChirpId()
   }, [])
 
   const combinedDate = () => {
@@ -47,10 +48,12 @@ const PostChirpForm = () => {
 
     const chirpResponse = await ApiRequest.postChirp(
       {user_id, timestamp, text, image}).then()
-    // console.log(chirpResponse.data.chirp_id)
+    console.log(chirpResponse.data.chirp_id)
     setChirpId(chirpResponse.data.chirp_id)
 
-    navigate("/addTagsToChirpForm")
+    setTimeout(() => {
+      navigate("/addTagsToChirpForm")
+    }, 1000)
   }
 
   if (token && currentUserInfo) {

@@ -47,7 +47,6 @@ const AddTagsToChirpForm = () => {
       }
     }
   };
-  
 
 
   return (
