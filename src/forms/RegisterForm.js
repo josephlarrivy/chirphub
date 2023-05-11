@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { ChromePicker } from "react-color";
 import ApiRequest from "../common/api";
+import useLocalStorage from "../hooks/useLocalStorage";
+
 
 const RegisterForm = () => {
   const [username, setUsername] = useState("");
   const [displayname, setDisplayname] = useState("");
   const [avatarColor, setAvatarColor] = useState("#000000");
   const [password, setPassword] = useState("");
+  const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -16,7 +20,9 @@ const RegisterForm = () => {
       avatarColor,
       password,
     });    
-    console.log(response.data.token);
+    if (response.status === 200) {
+      setTokenValue(response.data.token)
+    }
   };
 
   const handleColorChange = (color) => {

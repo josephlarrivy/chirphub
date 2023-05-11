@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { ChromePicker } from "react-color";
 import ApiRequest from "../common/api";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -12,7 +13,9 @@ const LoginForm = () => {
       username,
       password,
     });
-    console.log(response.data.token);
+    if (response.status === 200) {
+      setTokenValue(response.data.token)
+    }
   };
 
   return (
