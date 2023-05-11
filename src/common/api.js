@@ -19,7 +19,13 @@ class ApiRequest {
   static async test(formData) {
     const data = formData;
     return (
-      await this.makeRequest('get', '/test', null, data)
+      await this.makeRequest('POST', '/test', null, data)
+    )
+  }
+
+  static async register(data) {
+    return (
+      await this.makeRequest('POST', '/register', null, data)
     )
   }
 

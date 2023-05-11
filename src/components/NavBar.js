@@ -57,6 +57,12 @@ const NavBar = () => {
           ? "nav-item active" 
           : "nav-item"
         }>More</Link>
+      <Link
+        to="/register"
+        className={location.pathname === "/register"
+          ? "nav-item active"
+          : "nav-item"
+        }>Register</Link>
     </div>
   );
 }

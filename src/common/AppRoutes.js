@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Feed from "../components/Feed";
 import NavBar from "../components/NavBar";
-import TestComponent from "../components/TestComponent";
+import RegisterForm from "../forms/RegisterForm";
 
 
 import '../styles/AppRoutes.css'
@@ -20,8 +20,8 @@ const AppRoutes = () => {
             <Route exact path="/"
               element={<Feed />}
             />
-            <Route exact path="/test"
-              element={<TestComponent />}
+            <Route exact path="/register"
+              element={<RegisterForm />}
             />
           </Routes>
         </div>
