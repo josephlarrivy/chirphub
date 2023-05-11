@@ -1,8 +1,7 @@
 #chirp-form-container {
-    width: 86%;
-    margin-left: 7%;
+    width: 100;
     margin-bottom: 30px;
-    background-color: aqua;
+    background-color: #ededed;
 }
 
 #chirp-form-container .chirp-form-user-info {
@@ -34,7 +33,11 @@
 }
 
 .chirp-form-main #chirp-form-text-input {
-    width: 80%;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    height: 80px;
+    font-size: 20px;
 }
 
 /* .chirp-form-main .chirp-image {
@@ -50,8 +53,28 @@
 
 
 #chirp-form-container .chirp-form-bottom {
-    background-color: pink;
+    /* background-color: pink; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+#chirp-form-container #post-chirp-button {
+    margin: 10px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    background-color: white;
+    border-radius: 20px;
+    font-size: 20px;
+    color: #5F7470;
+    font-weight: 700;
+    
+
+    transition: all 0.2s ease-in-out;
+}
+
+#chirp-form-container #post-chirp-button:hover {
+    box-shadow: 2px 2px 2px #5F7470;
+    cursor: pointer;
 }

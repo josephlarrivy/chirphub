@@ -6,16 +6,24 @@ import '../styles/Feed.css'
 import fakeChirps from "../fake-data/fake-chirps";
 import ChirpFeedItem from "./ChirpFeedItem";
 import PostChirpForm from "../forms/PostChirpForm";
+import ApiRequest from "../common/api";
 
 const Feed = () => {
 
   const [chirps, setChirps] = useState(null)
 
   useEffect(() => {
-    fakeChirps.map(chirp => {
-      // console.log(chirp)
-      setChirps(fakeChirps)
-    })
+
+    const getChirps = async () => {
+      const response = await ApiRequest.getChirps()
+      console.log(response.data.data)
+      setChirps(response.data.data)
+    }
+    getChirps()
+
+    // fakeChirps.map(chirp => {
+    //   setChirps(fakeChirps)
+    // })
   }, [])
 
   return (

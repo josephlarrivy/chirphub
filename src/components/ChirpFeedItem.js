@@ -26,7 +26,9 @@ const ChirpFeedItem = ({chirp}) => {
         </div>
       </div>
       <div className="main">
-        <img className="chirp-image" src={chirp.image} alt="user-avatar" />
+        {chirp.image !== '' && 
+          <img className="chirp-image" src={chirp.image} alt="user-avatar" />
+        }
         <h4 className="chirp-text" >{chirp.text}</h4>
       </div>
       <div className="bottom">

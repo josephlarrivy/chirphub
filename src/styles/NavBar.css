@@ -9,6 +9,7 @@
 #nav-inner-container h1 {
     /* width: 100%; */
     margin: auto;
+    color: #5F7470;
     /* background-color: aqua; */
 }
 
@@ -20,10 +21,10 @@
     margin-right: 20px;
     border-radius: 20px;
     padding-left: 20px;
-    border: 1px solid black;
+    border: 1px solid #5F7470;
 
     background-color: white;
-    color: black;
+    color: #5F7470;
 }
 
 .active {
@@ -34,8 +35,8 @@
     margin-right: 20px;
     border-radius: 20px;
     padding-left: 20px;
-    border: 1px solid black;
+    border: 1px solid #5F7470;
 
-    background-color: black;    
+    background-color: #5F7470;    
     color: white;
 }

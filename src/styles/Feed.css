@@ -1,10 +1,10 @@
 #feed-inner-container {
     width: 50vw;
     box-sizing: border-box;
-    background-color: lightslategray;
+    background-color: white;
 }
 
 #post-chirp-form-container {
     width: 100%;
-    height: 350px;
+    /* height: 350px; */
 }

@@ -1,8 +1,15 @@
 #chirp-feed-item-container {
-    width: 86%;
-    margin-left: 7%;
-    margin-bottom: 30px;
-    background-color: aqua;
+    width: 100%;
+    border-top: 1px solid #B8BDB5;
+    /* border-bottom: 1px solid #B8BDB5; */
+    /* margin-bottom: 30px; */
+    /* background-color: aqua; */
+    transition: all 0.3s ease-in-out;
+}
+
+#chirp-feed-item-container:hover {
+    background-color: #ededed;
+    /* opacity: 0.4; */
 }
 
 #chirp-feed-item-container .user-info {
@@ -10,6 +17,10 @@
     display: flex;
     flex-direction: row;
     /* background-color: green; */
+}
+
+#chirp-feed-item-container .main {
+    padding-left: 15px;
 }
 
 .user-info .avatar {
@@ -43,7 +54,7 @@
 
 
 #chirp-feed-item-container .bottom {
-    background-color: pink;
+    /* background-color: pink; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;

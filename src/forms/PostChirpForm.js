@@ -70,23 +70,25 @@ const PostChirpForm = () => {
           </div>
         </div>
         <div className="chirp-form-main">
-          <p>image url</p>
-          <input
+          {/* <p>image url</p> */}
+          {/* <input
             id="chirp-form-url-input"
             type='text'
             value={postImageUrlInput}
             onChange={handlePostImageUrlInputChange}>
-          </input>
-          <p>chirp text</p>
-          <input
+          </input> */}
+          {/* <p>chirp text</p> */}
+          <textarea
             id="chirp-form-text-input"
             type='text'
             value={postTextInput}
-            onChange={handlePostTextInputChange}>
-          </input>
+            onChange={handlePostTextInputChange}
+            placeholder={'What\'s on your mind?'}
+            maxLength={290}>
+          </textarea>
         </div>
         <div className="chirp-form-bottom">
-          <button onClick={submitChirp} >Chirp</button>
+          <button id="post-chirp-button" onClick={submitChirp}>Chirp</button>
         </div>
       </div>
     );

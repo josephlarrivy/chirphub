@@ -47,6 +47,12 @@ class ApiRequest {
       await this.makeRequest('post', '/addTag', null, data)
     )
   }
+
+  static async getChirps() {
+    return (
+      await this.makeRequest('get', '/getChirps', null)
+    )
+  }
 }
 
 export default ApiRequest;

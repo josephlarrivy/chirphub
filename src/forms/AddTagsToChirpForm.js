@@ -46,6 +46,10 @@ const AddTagsToChirpForm = () => {
         )
       }
     }
+    setTimeout(() => {
+      removeChirpId()
+      navigate("/")
+    }, 1000)
   };
 
 
