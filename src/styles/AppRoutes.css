@@ -22,6 +22,9 @@
     border-bottom: 0;
     box-sizing: border-box;
     /* background-color: pink; */
+    box-shadow:
+        10px 0px 20px -5px #5F7470,
+        -10px 0px 20px -5px #5F7470;
 }
 
 #feed-outer-container {

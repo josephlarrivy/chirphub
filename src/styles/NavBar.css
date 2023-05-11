@@ -7,10 +7,12 @@
 }
 
 #nav-inner-container h1 {
-    /* width: 100%; */
+    width: 100%;
     margin: auto;
     color: #5F7470;
+    font-size: 50px;
     /* background-color: aqua; */
+    text-align: center;
 }
 
 .nav-item {

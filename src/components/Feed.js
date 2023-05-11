@@ -16,7 +16,7 @@ const Feed = () => {
 
     const getChirps = async () => {
       const response = await ApiRequest.getChirps()
-      console.log(response.data.data)
+      // console.log(response.data.data)
       setChirps(response.data.data)
     }
     getChirps()

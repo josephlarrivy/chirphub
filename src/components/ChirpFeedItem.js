@@ -1,16 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import ApiRequest from "../common/api";
+import useLocalStorage from "../hooks/useLocalStorage";
+
 
 import '../styles/ChirpFeedItem.css'
 
 const ChirpFeedItem = ({chirp}) => {
 
+  const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage("token");
+  const [currentUserId, setCurrentUserId] = useState(null)
+
   useEffect(() => {
     // console.log(chirp)
+    const user = getDecodedToken()
+    // console.log(user.user_id)
+    setCurrentUserId(user.user_id)
   }, [])
   
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp);
     return date.toLocaleString();
+  }
+
+  const addLikeToChirp = async () => {
+    // console.log(chirp.id)
+    // console.log(currentUserId)
+    const addLikeToChirp = await ApiRequest.likeChirp(
+      { 'chirp_id': chirp.id, 'user_id': currentUserId }
+    )
+    console.log(addLikeToChirp)
   }
 
   return (
@@ -32,9 +50,18 @@ const ChirpFeedItem = ({chirp}) => {
         <h4 className="chirp-text" >{chirp.text}</h4>
       </div>
       <div className="bottom">
-        <p>Likes: {chirp.likes}</p>
-        <p>Rechirps: {chirp.rechirps}</p>
-        <p>Comments: {chirp.comments}</p>
+        <div id="likes-count-container">
+          <button onClick={() => { addLikeToChirp() }}>like</button>
+          <p>Likes: {chirp.likes}</p>
+        </div>
+        <div id="rechirps-count-container">
+          <button>test</button>
+          <p>Rechirps: {chirp.rechirps}</p>
+        </div>
+        <div id="comments-count-container">
+          <button>test</button>
+          <p>Comments: {chirp.comments}</p>
+        </div>
       </div>
     </div>
   )

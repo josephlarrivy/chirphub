@@ -53,6 +53,12 @@ class ApiRequest {
       await this.makeRequest('get', '/getChirps', null)
     )
   }
+
+  static async likeChirp(data) {
+    return (
+      await this.makeRequest('post', `/likeChirp/${data.chirp_id}/${data.user_id}`, null)
+    )
+  }
 }
 
 export default ApiRequest;
