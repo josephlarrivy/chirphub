@@ -15,19 +15,13 @@ const PostChirpForm = () => {
 
   useEffect(() => {
     const userInfo = getDecodedToken()
-    console.log(userInfo)
+    // console.log(userInfo)
     setCurrentUserInfo({ ...userInfo })
   }, [])
 
-  function getCurrentTime() {
+  const combinedDate = () => {
     const currentTime = new Date();
-    const formattedTime = currentTime.toISOString();
-    return formattedTime;
-  }
-
-  function formatTimestamp(timestamp) {
-    const date = new Date(timestamp);
-    return date.toLocaleString();
+    return currentTime.toLocaleString();
   }
 
   const handlePostTextInputChange = (event) => {
@@ -40,39 +34,50 @@ const PostChirpForm = () => {
     setPostImageUrlInput(value)
   }
 
-  const submitChirp = () => {
-    console.log(postTextInput)
-    console.log(postImageUrlInput)
-    console.log(currentUserInfo.user_id)
+  const submitChirp = async () => {
+    const currentTime = new Date();
+
+    const user_id = currentUserInfo.user_id;
+    const timestamp = currentTime.toISOString();
+    const text = postTextInput;
+    const image = postImageUrlInput;
+
+    const response = await ApiRequest.postChirp(
+      {user_id, timestamp, text, image}
+    )
+    console.log(response)
+    
   }
 
   if (token && currentUserInfo) {
     return (
       <div id="chirp-form-container">
-        <div className="user-info">
+        <div className="chirp-form-user-info">
           <div
-            className="avatar"
+            className="chirp-form-avatar"
             style={{ backgroundColor: currentUserInfo.avatar }}
           />
-          <div className="user-info-text">
-            <p className="display-name">{currentUserInfo.displayname}</p>
-            <p className="timestamp">{formatTimestamp(getCurrentTime())}</p>
+          <div className="chirp-form-user-info-text">
+            <p className="chirp-form-display-name">{currentUserInfo.displayname}</p>
+            <p className="chirp-form-timestamp">{combinedDate()}</p>
           </div>
         </div>
-        <div className="main">
+        <div className="chirp-form-main">
           <input
+            id="chirp-form-url-input"
             type='text'
             value={postTextInput}
             onChange={handlePostTextInputChange}>
           </input>
           <br></br>
           <input
+            id="chirp-form-text-input"
             type='text'
             value={postImageUrlInput}
             onChange={handlePostImageUrlInputChange}>
           </input>
         </div>
-        <div className="bottom">
+        <div className="chirp-form-bottom">
           <button onClick={submitChirp} >Chirp</button>
         </div>
       </div>

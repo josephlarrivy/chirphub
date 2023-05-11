@@ -5,44 +5,51 @@
     background-color: aqua;
 }
 
-#chirp-form-container .user-info {
+#chirp-form-container .chirp-form-user-info {
     width: 100%;
     display: flex;
     flex-direction: row;
     /* background-color: green; */
 }
 
-#chirp-form-container .user-info .avatar {
+#chirp-form-container .chirp-form-user-info .chirp-form-avatar {
     margin: 10px;
     width: 70px;
     height: 70px;
     border-radius: 50%;
 }
 
-.user-info-text .display-name {
+.chirp-form-user-info-text .chirp-form-display-name {
     width: 500px;
     /* background-color: orange; */
 }
 
-.user-info-text .timestamp {
+.chirp-form-user-info-text .chirp-form-timestamp {
     width: 500px;
     /* background-color: red; */
 }
 
+.chirp-form-main #chirp-form-url-input {
+    width: 80%;
+}
 
-.main .chirp-image {
+.chirp-form-main #chirp-form-text-input {
+    width: 80%;
+}
+
+/* .chirp-form-main .chirp-image {
     width: 80%;
     margin-left: 10%;
     height: auto;
-}
+} */
 
-.main .chirp-text {
+/* .chirp-form-main .chirp-text {
     width: 80%;
     margin-left: 10%;
-}
+} */
 
 
-#chirp-form-container .bottom {
+#chirp-form-container .chirp-form-bottom {
     background-color: pink;
     display: flex;
     flex-direction: row;

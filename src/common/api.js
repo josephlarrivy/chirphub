@@ -35,10 +35,9 @@ class ApiRequest {
     )
   }
 
-  static async postChirp(formData) {
-    const data = formData;
+  static async postChirp(data) {
     return (
-      await this.makeRequest('post', '/new_chirp', null, data)
+      await this.makeRequest('post', '/postChirp', null, data)
     ) 
   }
 }
