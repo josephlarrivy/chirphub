@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
 
 const useLocalStorage = (key) => {
-  const [token, setToken] = useState(localStorage.getItem(key));
+  const [token, setToken] = useState(() => {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? storedValue : null;
+  });
 
   useEffect(() => {
-    localStorage.setItem(key, token);
+    if (token) {
+      localStorage.setItem(key, token);
+    } else {
+      localStorage.removeItem(key);
+    }
   }, [key, token]);
 
   const setTokenValue = (newToken) => {
@@ -22,7 +29,8 @@ const useLocalStorage = (key) => {
   const getDecodedToken = () => {
     try {
       const decodedValue = atob(token);
-      return decodedValue;
+      const parsedValue = JSON.parse(decodedValue);
+      return parsedValue;
     } catch (error) {
       console.error('Error decoding token:', error);
       return null;
@@ -33,4 +41,3 @@ const useLocalStorage = (key) => {
 };
 
 export default useLocalStorage;
-

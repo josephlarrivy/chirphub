@@ -16,7 +16,10 @@ const ChirpFeedItem = ({chirp}) => {
   return (
     <div key={chirp.id} id="chirp-feed-item-container">
       <div className="user-info">
-        <img className="avatar" src={chirp.avatar} alt="user-avatar" />
+        <div 
+          className="avatar"
+          style={{backgroundColor: chirp.avatar }}
+        />
         <div className="user-info-text">
           <p className="display-name">{chirp.displayName}</p>
           <p className="timestamp">{formatTimestamp(chirp.timestamp)}</p>
