@@ -6,6 +6,12 @@
     flex-direction: column;
 }
 
+#nav-inner-container h1 {
+    /* width: 100%; */
+    margin: auto;
+    /* background-color: aqua; */
+}
+
 .nav-item {
     text-decoration: none;
     font-size: 25px;
