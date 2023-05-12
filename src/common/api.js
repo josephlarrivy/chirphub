@@ -82,6 +82,13 @@ class ApiRequest {
       await this.makeRequest('post', `/getTagsByChirpId/${data.chirp_id}`, null, data)
     )
   }
+
+  static async getChirpsByTagId(data) {
+    // console.log(data.tag_id.tagId)
+    return (
+      await this.makeRequest('post', `/getChirpsByTagId/${data.tag_id.tagId}`, null, data)
+    )
+  }
 }
 
 export default ApiRequest;

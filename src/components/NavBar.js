@@ -19,13 +19,13 @@ const NavBar = () => {
           className={location.pathname === "/" 
             ? "nav-item active" 
             : "nav-item"
-          }>Home</Link>
-        <Link 
-          to="/explore" 
-          className={location.pathname === "/explore" 
-            ? "nav-item active" 
+          }>Feed</Link>
+        <Link
+          to="/tag/:tagId"
+          className={location.pathname.startsWith("/tag")
+            ? "nav-item active"
             : "nav-item"
-          }>Explore</Link>
+          }>Tags</Link>
         <Link 
           to="/notifications" 
           className={location.pathname === "/notifications" 

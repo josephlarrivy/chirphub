@@ -1,0 +1,24 @@
+#chirp-item-tags-container button {
+    /* width: 100px; */
+    height: 30px;
+    margin-right: 10px;
+    /* border: none; */
+    /* background-color: white; */
+    background-color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #5F7470;
+    background-color: #ededed;
+    border: 3px solid white;
+    font-weight: 400;
+
+
+    transition: all 0.2s ease-in-out;
+}
+
+#chirp-item-tags-container button:hover {
+    box-shadow: 2px 2px 2px #5F7470;
+    cursor: pointer;
+}

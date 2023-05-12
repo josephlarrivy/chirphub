@@ -1,0 +1,10 @@
+#feed-by-tags-inner-container {
+    width: 50vw;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+#list-of-tags-container {
+    width: 100%;
+    height: 200px;
+}

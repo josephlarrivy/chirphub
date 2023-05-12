@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import ChirpsByTag from "../components/ChirpsByTag";
 import Feed from "../components/Feed";
 import NavBar from "../components/NavBar";
 import AddTagsToChirpForm from "../forms/AddTagsToChirpForm";
@@ -34,6 +35,9 @@ const AppRoutes = () => {
             />
             <Route exact path="/addTagsToChirpForm"
               element={<AddTagsToChirpForm />}
+            />
+            <Route exact path="/tag/:tagId"
+              element={<ChirpsByTag />}
             />
           </Routes>
         </div>

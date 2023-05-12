@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 
 
 import '../styles/Feed.css'
-import fakeChirps from "../fake-data/fake-chirps";
 import ChirpFeedItem from "./ChirpFeedItem";
 import PostChirpForm from "../forms/PostChirpForm";
 import ApiRequest from "../common/api";
