@@ -1,8 +1,6 @@
 #page-main-container {
-    /* background-color: aqua; */
     width: 100vw;
     height: 100vh;
-
     display: flex;
     flex-direction: row;
 }
@@ -10,21 +8,19 @@
 #nav-outer-container {
     width: 25vw;
     height: 100%;
-    /* background-color: white; */
 }
 
 #feed-outer-container {
     width: 50vw;
     height: 100vh;
-    border-right: 2px solid #5F7470;
-    border-left: 2px solid #5F7470;
+    border-right: 2px solid #636363;
+    border-left: 2px solid #636363;
     border-top: 0;
     border-bottom: 0;
     box-sizing: border-box;
-    /* background-color: pink; */
     box-shadow:
-        10px 0px 20px -5px #5F7470,
-        -10px 0px 20px -5px #5F7470;
+        10px 0px 20px -5px #636363,
+        -10px 0px 20px -5px #636363;
 }
 
 #feed-outer-container {

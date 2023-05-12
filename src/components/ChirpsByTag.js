@@ -27,11 +27,14 @@ const ChirpsByTag = () => {
   }
 
   const deleteChirp = async (chirpId) => {
+  if (window.confirm("Are you sure you want to delete this chirp?")) {
     await ApiRequest.deleteChirp(
-      { 'chirp_id': chirpId }
+      { 'chirp_id': chirpId}
     );
     getChirps();
-  };
+  }
+};
+
 
   useEffect(() => {
     getChirps()
