@@ -63,6 +63,7 @@ class ApiRequest {
     return (
       await this.makeRequest('post', `/deleteChirp/${data.chirp_id}`, null)
     )
+    // return 'this needs to be fixed. "likes" are somehow screwing it up'
   }
 
   static async postChirpComment(data) {
@@ -84,11 +85,27 @@ class ApiRequest {
   }
 
   static async getChirpsByTagId(data) {
-    // console.log(data.tag_id.tagId)
     return (
       await this.makeRequest('post', `/getChirpsByTagId/${data.tag_id.tagId}`, null, data)
     )
   }
+
+  static async getAllTagsButCurrent(data) {
+    // console.log(data.tag_id.tagId)
+    return (
+      await this.makeRequest('post', `/getAllTagsButCurrent/${data.tag_id.tagId}`, null, data)
+    )
+  }
+
+  static async getAllTagsAsObjects() {
+    return (
+      await this.makeRequest('get', `/getAllTagsAsObjects`, null)
+    )
+  }
+
+
+
 }
+
 
 export default ApiRequest;
