@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ApiRequest from "../common/api";
+import ChirpCommentForm from "../forms/ChirpCommentForm";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 
@@ -82,8 +83,13 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
           <p>Comments: {chirp.comments}</p>
         </div>
       </div>
-      {commentBoxState === 'open' && <p>test</p>}
-
+      <div className={`chirp-comment-form-outer-container-${commentBoxState}`}>
+        <ChirpCommentForm 
+          commentBoxState={commentBoxState}
+          currentUserId={currentUserId}
+          chirpId={chirp.id}
+        />
+      </div>
     </div>
   )
 }

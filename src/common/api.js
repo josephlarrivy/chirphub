@@ -64,6 +64,12 @@ class ApiRequest {
       await this.makeRequest('post', `/deleteChirp/${data.chirp_id}`, null)
     )
   }
+
+  static async postChirpComment(data) {
+    return (
+      await this.makeRequest('post', '/postChirpComment', null, data)
+    )
+  }
 }
 
 export default ApiRequest;

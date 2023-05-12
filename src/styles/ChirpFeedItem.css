@@ -134,3 +134,42 @@
     background-color: white;
     color: #5F7470;
 }
+
+
+
+
+
+.chirp-comment-form-outer-container-closed {
+    height: 0px;
+    /* background-color: #ededed; */
+    animation: open 1s ease-in-out;
+}
+@keyframes close {
+    0% {
+        height: 0px;
+        /* opacity: 0; */
+    }
+
+    100% {
+        height: 140px;
+        /* opacity: 1; */
+    }
+}
+
+
+.chirp-comment-form-outer-container-open {
+    height: 140px;
+    /* background-color: #ededed; */
+    animation: close 1s ease-in-out;
+}
+@keyframes open {
+    0% {
+        height: 140px;
+        /* opacity: 1; */
+    }
+
+    100% {
+        height: 0px;
+        /* opacity: 0; */
+    }
+}

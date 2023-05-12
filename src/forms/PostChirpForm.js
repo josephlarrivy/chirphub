@@ -49,8 +49,9 @@ const PostChirpForm = () => {
     const image = postImageUrlInput;
 
     const chirpResponse = await ApiRequest.postChirp(
-      {user_id, timestamp, text, image}).then()
-    console.log(chirpResponse.data.chirp_id)
+      { user_id, timestamp, text, image }
+    )
+    // console.log(chirpResponse.data.chirp_id)
     setChirpId(chirpResponse.data.chirp_id)
 
     setTimeout(() => {
