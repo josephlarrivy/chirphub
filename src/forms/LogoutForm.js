@@ -18,7 +18,9 @@ const LogoutForm = () => {
 
   const logOut = () => {
     removeToken()
-    // navigate('/')
+    setTimeout(() => {
+      navigate('/')
+    }, 1000)
   }
 
   return (

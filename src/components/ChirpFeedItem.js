@@ -6,6 +6,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 import '../styles/ChirpFeedItem.css'
 import ChirpComments from "./ChirpComments";
+import ChirpItemTags from "./ChirpItemTags";
 
 const ChirpFeedItem = ({chirp, deleteChirp}) => {
 
@@ -82,10 +83,15 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
           <img className="chirp-image" src={chirp.image} alt="user-avatar" />
         }
         <h4 className="chirp-text" >{chirp.text}</h4>
+        <div id="chirp-tags-outer-container">
+          <ChirpItemTags chirpId={chirp.id} />
+        </div>
       </div>
       <div className="bottom">
         <div id="likes-count-container">
-          <button onClick={() => { addLikeToChirp() }}>like</button>
+          {token && 
+            <button onClick={() => { addLikeToChirp() }}>like</button>
+          }
           <p>Likes: {displayLikes}</p>
         </div>
         {/* <div id="rechirps-count-container">
@@ -93,7 +99,9 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
           <p>Rechirps: {chirp.rechirps}</p>
         </div> */}
         <div id="comments-count-container">
-          <button onClick={openAddCommentBox}>add</button>
+          {token && 
+            <button onClick={openAddCommentBox}>add</button>
+          }
           <button onClick={openViewCommentsBox}>view</button>
           <p>Comments: {displayCommentsCount}</p>
         </div>

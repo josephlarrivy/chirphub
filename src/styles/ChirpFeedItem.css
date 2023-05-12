@@ -217,3 +217,11 @@
         /* opacity: 0; */
     }
 }
+
+#chirp-tags-outer-container {
+    width: 90%;
+    margin-left: 8%;
+    margin-bottom: 10px;
+    height: 30px;
+    /* background-color: #5F7470; */
+}

@@ -12,7 +12,6 @@ const ChirpComments = ({ viewCommentsBoxState, chirpId, commentCount }) => {
     const comments = await ApiRequest.getCommentsByChirpId(
       { 'chirp_id' : chirpId }
     )
-    console.log(comments.data.data)
     setComments(comments.data.data)
   }
 
@@ -30,7 +29,7 @@ const ChirpComments = ({ viewCommentsBoxState, chirpId, commentCount }) => {
       <h4>Comments:</h4>
       {comments && comments.map(comment => {
         return(
-          <div className="individual-comment-container">
+          <div key={comment.timestamp} className="individual-comment-container">
             <div
               className="commenter-avatar"
               style={{ backgroundColor: comment.avatar }}

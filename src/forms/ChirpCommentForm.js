@@ -8,7 +8,7 @@ const ChirpCommentForm = ({ addCommentBoxState, currentUserId, chirpId, onCommen
   const [commentTextInput, setCommentTextInput] = useState('')
 
   useEffect(() => {
-    console.log(addCommentBoxState)
+    // console.log(addCommentBoxState)
   },[addCommentBoxState])
 
   function countCharacters(str) {

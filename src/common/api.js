@@ -76,6 +76,12 @@ class ApiRequest {
       await this.makeRequest('post', `/getCommentsByChirpId/${data.chirp_id}`, null, data)
     )
   }
+
+  static async getTagsByChirpId(data) {
+    return (
+      await this.makeRequest('post', `/getTagsByChirpId/${data.chirp_id}`, null, data)
+    )
+  }
 }
 
 export default ApiRequest;
