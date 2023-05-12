@@ -3,13 +3,13 @@ import ApiRequest from "../common/api";
 
 import '../styles/ChirpCommentForm.css'
 
-const ChirpCommentForm = ({ commentBoxState, currentUserId, chirpId }) => {
+const ChirpCommentForm = ({ addCommentBoxState, currentUserId, chirpId, onCommentSubmit, displayCommentsCount, setDisplayCommentsCount }) => {
 
   const [commentTextInput, setCommentTextInput] = useState('')
 
   useEffect(() => {
-    console.log(commentBoxState)
-  },[commentBoxState])
+    console.log(addCommentBoxState)
+  },[addCommentBoxState])
 
   function countCharacters(str) {
     return str.length;
@@ -31,11 +31,14 @@ const ChirpCommentForm = ({ commentBoxState, currentUserId, chirpId }) => {
     const commentResponse = await ApiRequest.postChirpComment(
       { user_id, timestamp, text, chirp_id }
     )
-    console.log(commentResponse)
+    // console.log(commentResponse)
+    setCommentTextInput('')
+    onCommentSubmit();
+    setDisplayCommentsCount(displayCommentsCount + 1)
   }
 
   return(
-    <div id={`chirp-comment-form-inner-container-${commentBoxState}`}>
+    <div id={`chirp-comment-form-inner-container-${addCommentBoxState}`}>
       <div id="above-comment-box">
         <p id="remaining-character-count-comment">Remaining Characters: {290 - countCharacters(commentTextInput)}</p>
       </div>

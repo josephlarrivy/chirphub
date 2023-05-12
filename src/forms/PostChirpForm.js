@@ -98,10 +98,10 @@ const PostChirpForm = () => {
     );
   } else {
     return (
-      <div>
-        <p>Must log in to Chirp</p>
-        <button onClick={() => {navigate('/register')}}>Register</button>
-        <button onClick={() => { navigate('/login') }}>Log In</button>
+      <div id="user-not-logged-in-container">
+        <h3>Please log in or register to Chirp</h3>
+        <button className="login-or-register-button" onClick={() => {navigate('/register')}}>Register</button>
+        <button className="login-or-register-button" onClick={() => { navigate('/login') }}>Log In</button>
       </div>
     );
   }

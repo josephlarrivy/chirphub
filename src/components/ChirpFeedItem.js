@@ -5,6 +5,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 
 import '../styles/ChirpFeedItem.css'
+import ChirpComments from "./ChirpComments";
 
 const ChirpFeedItem = ({chirp, deleteChirp}) => {
 
@@ -12,37 +13,50 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
   const [currentUserId, setCurrentUserId] = useState(null)
   const [currentUserUsername, setCurrentUserUsername] = useState(null)
   const [displayLikes, setDisplayLikes] = useState(chirp.likes)
+  const [displayCommentsCount, setDisplayCommentsCount] = useState(chirp.comments)
   const [likesButtonStatus, setLikesButtonStatus] = useState('on')
-  const [commentBoxState, setCommentBoxState] = useState('closed')
+  const [addCommentBoxState, setAddCommentBoxState] = useState('closed')
+  const [viewCommentsBoxState, setViewCommentsBoxState] = useState('closed')
+  const [commentCount, setCommentCount] = useState(0);
+
 
   useEffect(() => {
-    const user = getDecodedToken()
-    setCurrentUserId(user.user_id)
-    setCurrentUserUsername(user.username)
+    if (token) {
+      const user = getDecodedToken()
+      setCurrentUserId(user.user_id)
+      setCurrentUserUsername(user.username)
+    }    
   }, [])
-  
+
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp);
     return date.toLocaleString();
   }
+
 
   const addLikeToChirp = async () => {
     if (likesButtonStatus === 'on') {
       const addLikeToChirp = await ApiRequest.likeChirp(
         { 'chirp_id': chirp.id, 'user_id': currentUserId }
       )
-      console.log(addLikeToChirp)
       setDisplayLikes(displayLikes + 1)
       setLikesButtonStatus('off')
     }
   }
 
-
-  const openCommentBox = () => {
-    if (commentBoxState === 'closed') {
-      setCommentBoxState('open')
+  const openAddCommentBox = () => {
+    if (addCommentBoxState === 'closed') {
+      setAddCommentBoxState('open')
     } else {
-      setCommentBoxState('closed')
+      setAddCommentBoxState('closed')
+    }
+  }
+
+  const openViewCommentsBox = () => {
+    if (viewCommentsBoxState === 'closed') {
+      setViewCommentsBoxState('open')
+    } else {
+      setViewCommentsBoxState('closed')
     }
   }
 
@@ -60,7 +74,7 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
         />
         <div className="user-info-text">
           <p className="display-name">{chirp.displayName}</p>
-          <p className="timestamp">{formatTimestamp(chirp.timestamp)}</p>
+          <p className="chirp-feed-item-timestamp">{formatTimestamp(chirp.timestamp)}</p>
         </div>
       </div>
       <div className="main">
@@ -74,20 +88,31 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
           <button onClick={() => { addLikeToChirp() }}>like</button>
           <p>Likes: {displayLikes}</p>
         </div>
-        <div id="rechirps-count-container">
+        {/* <div id="rechirps-count-container">
           <button>test</button>
           <p>Rechirps: {chirp.rechirps}</p>
-        </div>
+        </div> */}
         <div id="comments-count-container">
-          <button onClick={openCommentBox}>add</button>
-          <p>Comments: {chirp.comments}</p>
+          <button onClick={openAddCommentBox}>add</button>
+          <button onClick={openViewCommentsBox}>view</button>
+          <p>Comments: {displayCommentsCount}</p>
         </div>
       </div>
-      <div className={`chirp-comment-form-outer-container-${commentBoxState}`}>
+      <div className={`chirp-comment-form-outer-container-${addCommentBoxState}`}>
         <ChirpCommentForm 
-          commentBoxState={commentBoxState}
+          addCommentBoxState={addCommentBoxState}
           currentUserId={currentUserId}
           chirpId={chirp.id}
+          onCommentSubmit={() => setCommentCount(commentCount + 1)}
+          displayCommentsCount={displayCommentsCount}
+          setDisplayCommentsCount={setDisplayCommentsCount}
+        />
+      </div>
+      <div className={`chirp-view-comments-outer-container-${viewCommentsBoxState}`}>
+        <ChirpComments
+          viewCommentsBoxState={viewCommentsBoxState}
+          chirpId={chirp.id}
+          commentCount={commentCount}
         />
       </div>
     </div>
