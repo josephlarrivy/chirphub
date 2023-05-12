@@ -5,16 +5,19 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 import '../styles/ChirpFeedItem.css'
 
-const ChirpFeedItem = ({chirp}) => {
+const ChirpFeedItem = ({chirp, deleteChirp}) => {
 
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage("token");
   const [currentUserId, setCurrentUserId] = useState(null)
+  const [currentUserUsername, setCurrentUserUsername] = useState(null)
+  const [displayLikes, setDisplayLikes] = useState(chirp.likes)
+  const [likesButtonStatus, setLikesButtonStatus] = useState('on')
+  const [commentBoxState, setCommentBoxState] = useState('closed')
 
   useEffect(() => {
-    // console.log(chirp)
     const user = getDecodedToken()
-    // console.log(user.user_id)
     setCurrentUserId(user.user_id)
+    setCurrentUserUsername(user.username)
   }, [])
   
   function formatTimestamp(timestamp) {
@@ -23,16 +26,32 @@ const ChirpFeedItem = ({chirp}) => {
   }
 
   const addLikeToChirp = async () => {
-    // console.log(chirp.id)
-    // console.log(currentUserId)
-    const addLikeToChirp = await ApiRequest.likeChirp(
-      { 'chirp_id': chirp.id, 'user_id': currentUserId }
-    )
-    console.log(addLikeToChirp)
+    if (likesButtonStatus === 'on') {
+      const addLikeToChirp = await ApiRequest.likeChirp(
+        { 'chirp_id': chirp.id, 'user_id': currentUserId }
+      )
+      console.log(addLikeToChirp)
+      setDisplayLikes(displayLikes + 1)
+      setLikesButtonStatus('off')
+    }
+  }
+
+
+  const openCommentBox = () => {
+    if (commentBoxState === 'closed') {
+      setCommentBoxState('open')
+    } else {
+      setCommentBoxState('closed')
+    }
   }
 
   return (
     <div key={chirp.id} id="chirp-feed-item-container">
+      {currentUserUsername === chirp.username &&
+        <button
+          id='chirp-feed-item-delete-button'
+          onClick={() => deleteChirp(chirp.id)}>X</button>
+      }
       <div className="user-info">
         <div 
           className="avatar"
@@ -52,17 +71,19 @@ const ChirpFeedItem = ({chirp}) => {
       <div className="bottom">
         <div id="likes-count-container">
           <button onClick={() => { addLikeToChirp() }}>like</button>
-          <p>Likes: {chirp.likes}</p>
+          <p>Likes: {displayLikes}</p>
         </div>
         <div id="rechirps-count-container">
           <button>test</button>
           <p>Rechirps: {chirp.rechirps}</p>
         </div>
         <div id="comments-count-container">
-          <button>test</button>
+          <button onClick={openCommentBox}>add</button>
           <p>Comments: {chirp.comments}</p>
         </div>
       </div>
+      {commentBoxState === 'open' && <p>test</p>}
+
     </div>
   )
 }

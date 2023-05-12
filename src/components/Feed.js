@@ -12,18 +12,20 @@ const Feed = () => {
 
   const [chirps, setChirps] = useState(null)
 
+  const getChirps = async () => {
+    const response = await ApiRequest.getChirps()
+    setChirps(response.data.data)
+  }
+
+  const deleteChirp = async (chirpId) => {
+    await ApiRequest.deleteChirp(
+      { 'chirp_id': chirpId}
+    );
+    getChirps();
+  };
+
   useEffect(() => {
-
-    const getChirps = async () => {
-      const response = await ApiRequest.getChirps()
-      // console.log(response.data.data)
-      setChirps(response.data.data)
-    }
     getChirps()
-
-    // fakeChirps.map(chirp => {
-    //   setChirps(fakeChirps)
-    // })
   }, [])
 
   return (
@@ -36,6 +38,7 @@ const Feed = () => {
           <ChirpFeedItem 
             key={chirp.id}
             chirp={chirp}
+            deleteChirp={deleteChirp}
           />
         )
       })}

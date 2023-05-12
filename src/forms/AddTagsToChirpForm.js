@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import ApiRequest from "../common/api";
 import useLocalStorage from "../hooks/useLocalStorage";
 
+import '../styles/AddTagsToChirpForm.css'
+
 
 const AddTagsToChirpForm = () => {
 
@@ -52,10 +54,9 @@ const AddTagsToChirpForm = () => {
     }, 1000)
   };
 
-
   return (
     <div id="chirp-form-tags-input-container">
-      <p>type up to three tags</p>
+      <p id="add-tags-to-chirp-form-text">Type up to three tags.</p>
       <input
         id="chirp-form-tag-input-one"
         type='text'
@@ -75,7 +76,8 @@ const AddTagsToChirpForm = () => {
         onChange={handleTagInputThreeChange}>
       </input>
       <div className="tags-form-bottom">
-        <button onClick={submitTags}>add tags</button>
+        <button id="add-tags-to-chirp-form-sumbit" onClick={submitTags}>Add Tags</button>
+        <button id="add-tags-to-chirp-form-sumbit" onClick={submitTags}>Skip Tags</button>
       </div>
     </div>
   )

@@ -42,7 +42,6 @@ class ApiRequest {
   }
 
   static async addTag(data) {
-    console.log(data)
     return (
       await this.makeRequest('post', '/addTag', null, data)
     )
@@ -57,6 +56,12 @@ class ApiRequest {
   static async likeChirp(data) {
     return (
       await this.makeRequest('post', `/likeChirp/${data.chirp_id}/${data.user_id}`, null)
+    )
+  }
+
+  static async deleteChirp(data) {
+    return (
+      await this.makeRequest('post', `/deleteChirp/${data.chirp_id}`, null)
     )
   }
 }

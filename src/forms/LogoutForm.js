@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 
 const LogoutForm = () => {
 
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
+  const navigate = useNavigate()
 
   useEffect(() => {
     const token = getToken()
@@ -16,6 +18,7 @@ const LogoutForm = () => {
 
   const logOut = () => {
     removeToken()
+    navigate('/')
   }
 
   return (

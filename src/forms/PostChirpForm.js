@@ -36,7 +36,9 @@ const PostChirpForm = () => {
     setPostTextInput(value);
   };
 
-  
+  function countCharacters(str) {
+    return str.length;
+  }
 
   const submitChirp = async () => {
     const currentTime = new Date();
@@ -78,6 +80,7 @@ const PostChirpForm = () => {
             onChange={handlePostImageUrlInputChange}>
           </input> */}
           {/* <p>chirp text</p> */}
+          <p id="remaining-character-count">Remaining Characters: {290 - countCharacters(postTextInput)}</p>
           <textarea
             id="chirp-form-text-input"
             type='text'
