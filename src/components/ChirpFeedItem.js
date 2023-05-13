@@ -19,6 +19,7 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
   const [addCommentBoxState, setAddCommentBoxState] = useState('closed')
   const [viewCommentsBoxState, setViewCommentsBoxState] = useState('closed')
   const [commentCount, setCommentCount] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
 
   useEffect(() => {
@@ -61,8 +62,23 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
     }
   }
 
+  const handleHover = (isHovered) => {
+    console.log(`Hovering: ${isHovered ? "Yes" : "No"}`);
+  };
+
   return (
-    <div key={chirp.id} id="chirp-feed-item-container">
+    <div
+      key={chirp.id}
+      id="chirp-feed-item-container"
+      onMouseEnter={() => {
+        setIsHovered(true);
+        handleHover(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        handleHover(false);
+      }}
+      >
       {currentUserUsername === chirp.username &&
         <button
           id='chirp-feed-item-delete-button'
@@ -84,7 +100,10 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
         }
         <h4 className="chirp-text" >{chirp.text}</h4>
         <div id="chirp-tags-outer-container">
-          <ChirpItemTags chirpId={chirp.id} />
+          <ChirpItemTags
+            chirpId={chirp.id}
+            isHovered={isHovered}
+          />
         </div>
       </div>
       <div className="bottom">
@@ -114,6 +133,7 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
           onCommentSubmit={() => setCommentCount(commentCount + 1)}
           displayCommentsCount={displayCommentsCount}
           setDisplayCommentsCount={setDisplayCommentsCount}
+          isHovered={isHovered}
         />
       </div>
       <div className={`chirp-view-comments-outer-container-${viewCommentsBoxState}`}>

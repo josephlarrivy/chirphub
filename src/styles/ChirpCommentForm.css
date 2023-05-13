@@ -50,7 +50,30 @@
     color: #5F7470;
 }
 
-#chirp-comment-submit-button {
+
+
+
+#chirp-comment-submit-button-hover {
+    width: 100px;
+    height: 30px;
+    margin-left: 50px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #5F7470;
+    background-color: white;
+    border: 3px solid white;
+    font-weight: 400;
+
+
+    transition: all 0.2s ease-in-out;
+}
+
+#chirp-comment-submit-button-hover:hover {
+    box-shadow: 2px 2px 2px #5F7470;
+    cursor: pointer;
+}
+
+#chirp-comment-submit-button-no-hover {
     width: 100px;
     height: 30px;
     margin-left: 50px;
@@ -65,7 +88,7 @@
     transition: all 0.2s ease-in-out;
 }
 
-#chirp-comment-submit-button:hover {
+#chirp-comment-submit-button-no-hover:hover {
     box-shadow: 2px 2px 2px #5F7470;
     cursor: pointer;
 }

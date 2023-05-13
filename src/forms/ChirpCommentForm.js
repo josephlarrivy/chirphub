@@ -3,13 +3,14 @@ import ApiRequest from "../common/api";
 
 import '../styles/ChirpCommentForm.css'
 
-const ChirpCommentForm = ({ addCommentBoxState, currentUserId, chirpId, onCommentSubmit, displayCommentsCount, setDisplayCommentsCount }) => {
+const ChirpCommentForm = ({ addCommentBoxState, currentUserId, chirpId, onCommentSubmit, displayCommentsCount, setDisplayCommentsCount, isHovered }) => {
 
   const [commentTextInput, setCommentTextInput] = useState('')
+  const [hoverState, setHoverState] = useState('no-hover')
 
   useEffect(() => {
-    // console.log(addCommentBoxState)
-  },[addCommentBoxState])
+    setHoverState(isHovered ? 'hover' : 'no-hover');
+  }, [isHovered])
 
   function countCharacters(str) {
     return str.length;
@@ -50,7 +51,7 @@ const ChirpCommentForm = ({ addCommentBoxState, currentUserId, chirpId, onCommen
         placeholder={'What\'s your reply?'}
         maxLength={290}>
       </textarea>
-      <button onClick={addCommentToChirp} id="chirp-comment-submit-button">Comment</button>
+      <button onClick={addCommentToChirp} id={`chirp-comment-submit-button-${hoverState}`}>Comment</button>
     </div>
   )
 }

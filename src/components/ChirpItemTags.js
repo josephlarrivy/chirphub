@@ -4,7 +4,7 @@ import ApiRequest from "../common/api";
 
 import '../styles/ChirpItemTags.css'
 
-const ChirpItemTags = ({chirpId}) => {
+const ChirpItemTags = ({chirpId, isHovered}) => {
 
   const [tags, setTags] = useState(null)
   const navigate = useNavigate()
@@ -20,19 +20,35 @@ const ChirpItemTags = ({chirpId}) => {
     getTagsByChirpId()
   }, [])
 
-  return(
-    <div id="chirp-item-tags-container">
-      {tags && tags.map(tag => {
-        const tagId = tag.tag_id
-        return(
-          <button
-            key={tag.tag_id}
-            onClick={() => {navigate(`/tag/${tagId}`)}}
-          >{tag.tag_name}</button>
-        )
-      })}
-    </div>
-  )
+  if (isHovered === true) {
+    return (
+      <div id="chirp-item-tags-container-hover">
+        {tags && tags.map(tag => {
+          const tagId = tag.tag_id
+          return (
+            <button
+              key={tag.tag_id}
+              onClick={() => { navigate(`/tag/${tagId}`) }}
+            >{tag.tag_name}</button>
+          )
+        })}
+      </div>
+    )
+  } else {
+    return (
+      <div id="chirp-item-tags-container">
+        {tags && tags.map(tag => {
+          const tagId = tag.tag_id
+          return (
+            <button
+              key={tag.tag_id}
+              onClick={() => { navigate(`/tag/${tagId}`) }}
+            >{tag.tag_name}</button>
+          )
+        })}
+      </div>
+    )
+  }
 }
 
 export default ChirpItemTags;
