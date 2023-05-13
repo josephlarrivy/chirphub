@@ -3,7 +3,19 @@
     height: 280px;
     margin-bottom: 30px;
     background-color: #ededed;
-    /* text-align: center; */
+    
+    animation: fade-in;
+    animation-duration: 1s;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 #chirp-form-tags-input-container .chirp-form-user-info {
@@ -72,4 +84,15 @@
 #add-tags-to-chirp-form-sumbit:hover {
     box-shadow: 2px 2px 2px #5F7470;
     cursor: pointer;
+}
+
+#user-not-logged-in-container {
+    /* background-color: #5F7470; */
+    text-align: center;
+    padding: 20px;
+
+    transition: all 1s ease-in-out;
+
+    animation: fade-in;
+    animation-duration: 1s;
 }

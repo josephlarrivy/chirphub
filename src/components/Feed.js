@@ -24,43 +24,63 @@ const Feed = () => {
       { 'chirp_id': chirpId}
     );
     getChirps();
-  }
-};
+    } 
+  };
 
 
   useEffect(() => {
     getChirps()
   }, [])
 
+  if (postPhase === 'transition-tag') {
+    setTimeout(() => {
+      // navigate("/addTagsToChirpForm")
+      setPostPhase('tag')
+    }, 1000)
+  }
+
+  if (postPhase === 'transition-chirp') {
+    setTimeout(() => {
+      // navigate("/addTagsToChirpForm")
+      setPostPhase('chirp')
+    }, 1000)
+  }
+
 
   return (
     <div id="feed-inner-container">
-      {postPhase === 'chirp'
-        ?
+      {postPhase === 'chirp' ? (
         <div id="post-chirp-form-container-chirp">
-          <PostChirpForm 
+          <PostChirpForm
+            postPhase={postPhase}
             setPostPhase={setPostPhase}
           />
         </div>
-        :
+      ) : postPhase === 'tag' ? (
         <div id="post-chirp-form-container-tag">
-          <AddTagsToChirpForm 
+          <AddTagsToChirpForm
+            postPhase={postPhase}
             setPostPhase={setPostPhase}
             getChirps={getChirps}
           />
         </div>
-      }
-      {chirps && chirps.map(chirp => {
-        return(
-          <ChirpFeedItem 
+      ) : (
+      <div id="post-chirp-form-container-transition">
+        <></>
+      </div>
+      )}
+      {chirps && chirps.map((chirp) => {
+        return (
+          <ChirpFeedItem
             key={chirp.id}
             chirp={chirp}
             deleteChirp={deleteChirp}
           />
-        )
+        );
       })}
     </div>
-  )
+  );
+
 }
 
 export default Feed;

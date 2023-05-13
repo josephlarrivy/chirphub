@@ -7,7 +7,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import '../styles/AddTagsToChirpForm.css'
 
 
-const AddTagsToChirpForm = ({ setPostPhase, getChirps }) => {
+const AddTagsToChirpForm = ({ postPhase, setPostPhase, getChirps }) => {
 
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage("token");
   const [chirpId, setChirpId, removeChirpId, getChirpId, getDecodedChirpId] = useLocalStorage("chirpId");
@@ -61,9 +61,11 @@ const AddTagsToChirpForm = ({ setPostPhase, getChirps }) => {
       removeChirpId()
       // navigate("/")
       getChirps()
-      setPostPhase('chirp')
+      setPostPhase('transition-chirp')
     }, 1000)
   };
+
+  
 
   if (token && currentUserInfo) {
     return (

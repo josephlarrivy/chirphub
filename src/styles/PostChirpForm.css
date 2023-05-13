@@ -3,6 +3,19 @@
     height: 280px;
     margin-bottom: 30px;
     background-color: #ededed;
+    transition: all 1s ease-in-out;
+
+    animation: fade-in;
+    animation-duration: 1s;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 
@@ -94,6 +107,11 @@
     /* background-color: #5F7470; */
     text-align: center;
     padding: 20px;
+
+    transition: all 1s ease-in-out;
+    
+    animation: fade-in;
+    animation-duration: 1s;
 }
 
 #user-not-logged-in-container .login-or-register-button {

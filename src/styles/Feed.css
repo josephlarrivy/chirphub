@@ -16,3 +16,8 @@
     /* transition: all 3s ease-in-out; */
 }
 
+#post-chirp-form-container-transition {
+    width: 100%;
+    height: 350px;
+    opacity: 0;
+}

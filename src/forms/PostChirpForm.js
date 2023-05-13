@@ -5,7 +5,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 import '../styles/PostChirpForm.css'
 
-const PostChirpForm = ({ setPostPhase }) => {
+const PostChirpForm = ({ postPhase, setPostPhase }) => {
 
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage("token");
   const [chirpId, setChirpId, removeChirpId, getChirpId, getDecodedChirpId] = useLocalStorage("chirpId");
@@ -56,7 +56,7 @@ const PostChirpForm = ({ setPostPhase }) => {
 
     setTimeout(() => {
       // navigate("/addTagsToChirpForm")
-      setPostPhase('tags')
+      setPostPhase('transition-tag')
     }, 1000)
   }
 
