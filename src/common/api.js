@@ -63,7 +63,6 @@ class ApiRequest {
     return (
       await this.makeRequest('post', `/deleteChirp/${data.chirp_id}`, null)
     )
-    // return 'this needs to be fixed. "likes" are somehow screwing it up'
   }
 
   static async postChirpComment(data) {

@@ -63,7 +63,7 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
   }
 
   const handleHover = (isHovered) => {
-    console.log(`Hovering: ${isHovered ? "Yes" : "No"}`);
+    // console.log(`Hovering: ${isHovered ? "Yes" : "No"}`);
   };
 
   return (
