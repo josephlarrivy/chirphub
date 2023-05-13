@@ -6,10 +6,12 @@ import '../styles/Feed.css'
 import ChirpFeedItem from "./ChirpFeedItem";
 import PostChirpForm from "../forms/PostChirpForm";
 import ApiRequest from "../common/api";
+import AddTagsToChirpForm from "../forms/AddTagsToChirpForm";
 
 const Feed = () => {
 
   const [chirps, setChirps] = useState(null)
+  const [postPhase, setPostPhase] = useState('chirp')
 
   const getChirps = async () => {
     const response = await ApiRequest.getChirps()
@@ -30,11 +32,24 @@ const Feed = () => {
     getChirps()
   }, [])
 
+
   return (
     <div id="feed-inner-container">
-      <div id="post-chirp-form-container">
-        <PostChirpForm />
-      </div>
+      {postPhase === 'chirp'
+        ?
+        <div id="post-chirp-form-container-chirp">
+          <PostChirpForm 
+            setPostPhase={setPostPhase}
+          />
+        </div>
+        :
+        <div id="post-chirp-form-container-tag">
+          <AddTagsToChirpForm 
+            setPostPhase={setPostPhase}
+            getChirps={getChirps}
+          />
+        </div>
+      }
       {chirps && chirps.map(chirp => {
         return(
           <ChirpFeedItem 

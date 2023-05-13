@@ -1,8 +1,33 @@
 #chirp-form-tags-input-container {
     width: 100;
+    height: 280px;
     margin-bottom: 30px;
     background-color: #ededed;
-    text-align: center;
+    /* text-align: center; */
+}
+
+#chirp-form-tags-input-container .chirp-form-user-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* background-color: green; */
+}
+
+#chirp-form-tags-input-container .chirp-form-user-info .chirp-form-avatar {
+    margin: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+#chirp-form-tags-input-container .chirp-form-display-name {
+    width: 500px;
+    /* background-color: orange; */
+}
+
+#chirp-form-tags-input-container .chirp-form-timestamp {
+    width: 500px;
+    /* background-color: red; */
 }
 
 #add-tags-to-chirp-form-text {

@@ -1,8 +1,10 @@
 #chirp-form-container {
     width: 100;
+    height: 280px;
     margin-bottom: 30px;
     background-color: #ededed;
 }
+
 
 #chirp-form-container .chirp-form-user-info {
     width: 100%;
@@ -111,4 +113,8 @@
 #user-not-logged-in-container .login-or-register-button:hover {
     box-shadow: 2px 2px 2px #5F7470;
     cursor: pointer;
+}
+
+#add-tags-to-chirp-form-area {
+    text-align: center;
 }

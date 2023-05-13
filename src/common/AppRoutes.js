@@ -33,9 +33,9 @@ const AppRoutes = () => {
             <Route exact path="/logout"
               element={<LogoutForm />}
             />
-            <Route exact path="/addTagsToChirpForm"
+            {/* <Route exact path="/addTagsToChirpForm"
               element={<AddTagsToChirpForm />}
-            />
+            /> */}
             <Route exact path="/tag/:tagId"
               element={<ChirpsByTag />}
             />

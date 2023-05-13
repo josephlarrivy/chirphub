@@ -13,7 +13,6 @@ const ChirpItemTags = ({chirpId}) => {
     const dbTags = await ApiRequest.getTagsByChirpId(
       {'chirp_id' : chirpId}
     )
-    console.log(dbTags)
     setTags(dbTags.data.data)
   }
 
