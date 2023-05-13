@@ -15,6 +15,7 @@ const RegisterForm = () => {
   const [passwordWarning, setPasswordWarning] = useState(null)
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
   const navigate = useNavigate()
+  const [error, setError] = useState(null)
 
 
   useEffect(() => {
@@ -33,13 +34,17 @@ const RegisterForm = () => {
       displayname,
       avatarColor,
       password,
-    });    
-    if (response.status === 200) {
+    });
+    console.log(response)
+    if (response.data = 'Username taken') {
+      navigate('/register')
+      setError('username already taken - pick another')
+    } else {
       setTokenValue(response.data.token)
+      setTimeout(() => {
+        navigate('/')
+      }, 1000)
     }
-    setTimeout(() => {
-      navigate('/')
-    }, 1000)
   };
 
   const handleColorChange = (color) => {
@@ -91,6 +96,7 @@ const RegisterForm = () => {
           Avatar Color:
           <ChromePicker color={avatarColor} onChange={handleColorChange} />
         </label>
+        {error && <p>{error}</p>}
         <button id="register-form-submit" type="submit">Register</button>
       </form>
     </div>

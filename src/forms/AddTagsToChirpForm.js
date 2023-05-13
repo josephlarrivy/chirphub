@@ -116,11 +116,12 @@ const AddTagsToChirpForm = ({ postPhase, setPostPhase, getChirps }) => {
           })}
         </div>
         <div id="add-tags-to-chirp-form-area">
-          {tagCount <= 0 &&
+          {tagCount <= 2 &&
             <input
               id="chirp-form-tag-input-one"
               type='text'
               value={tagInputOne}
+              maxlength="20"
               onChange={handleTagInputOneChange}>
             </input>
           }
@@ -129,14 +130,16 @@ const AddTagsToChirpForm = ({ postPhase, setPostPhase, getChirps }) => {
               id="chirp-form-tag-input-two"
               type='text'
               value={tagInputTwo}
+              maxlength="20"
               onChange={handleTagInputTwoChange}>
             </input>
           }
-          {tagCount <= 2 &&
+          {tagCount <= 0 &&
             <input
               id="chirp-form-tag-input-three"
               type='text'
               value={tagInputThree}
+              maxlength="20"
               onChange={handleTagInputThreeChange}>
             </input>
           }

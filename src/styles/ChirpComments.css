@@ -58,6 +58,7 @@
 
 #chirp-comment-info {
     width: 80%;
+    word-break: break-word;
     /* background-color: #5F7470; */
 }
 

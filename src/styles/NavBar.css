@@ -29,6 +29,10 @@
     color: #151515;
 }
 
+.nav-item:hover {
+    
+}
+
 .active {
     text-decoration: none;
     font-size: 25px;

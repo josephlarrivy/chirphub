@@ -34,5 +34,35 @@ overflow-y: scroll;
 #right-outer-container {
     width: 25vw;
     height: 100vh;
-    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ad-container {
+    position: relative;
+    width: 70%;
+    padding-bottom: 70%;
+    margin: 10px;
+    border: 2px solid #636363;
+    overflow: hidden;
+}
+
+.ad-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.ad-container a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }

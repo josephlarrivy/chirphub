@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 
+import '../styles/LogoutForm.css'
 
 const LogoutForm = () => {
 
@@ -16,17 +17,17 @@ const LogoutForm = () => {
     console.log(decodedToken)
   }, [])
 
-  const logOut = () => {
-    removeToken()
+  const logOut = async () => {
+    await removeToken()
     setTimeout(() => {
       navigate('/')
-    }, 1000)
+    }, 400)
   }
 
   return (
-    <div>
-      <p>Are you sure that you want to log out?</p>
-      <button onClick={() => {logOut()}}>Log Out</button>
+    <div className="logout-form-container">
+      <p className="logout-message" >Are you sure that you want to log out?</p>
+      <button className="logout-button" onClick={() => {logOut()}}>Log Out</button>
     </div>
   )
 }

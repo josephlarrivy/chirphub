@@ -46,8 +46,21 @@ const AppRoutes = () => {
           </Routes>
         </div>
         <div id="right-outer-container">
-
+          <div className="ad-container">
+            <a href="https://joseph-larrivy-portfolio.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+              <div className="ad-image" style={{ backgroundImage: `url(${require('../images/josephlarrivyad.png')})` }}></div></a>
+          </div>
+          <div className="ad-container">
+            <a href="https://parkexplorerpro-client.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+              <div className="ad-image" style={{ backgroundImage: `url(${require('../images/parksad.png')})` }}></div></a>
+          </div>
+          <div className="ad-container">
+            <a href="https://nasa-exploration.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+              <div className="ad-image" style={{ backgroundImage: `url(${require('../images/nasaad.png')})` }}></div></a>
+          </div>
         </div>
+
+
       </BrowserRouter>
     </div>
   )
