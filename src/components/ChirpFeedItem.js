@@ -8,7 +8,7 @@ import '../styles/ChirpFeedItem.css'
 import ChirpComments from "./ChirpComments";
 import ChirpItemTags from "./ChirpItemTags";
 
-const ChirpFeedItem = ({chirp, deleteChirp}) => {
+const ChirpFeedItem = ({chirp, deleteChirp, deleteChirpBookmark}) => {
 
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage("token");
   const [currentUserId, setCurrentUserId] = useState(null)
@@ -20,13 +20,14 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
   const [viewCommentsBoxState, setViewCommentsBoxState] = useState('closed')
   const [commentCount, setCommentCount] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-
+  const [currentUsersBookmarks, setCurrentUsersBookmarks] = useState(null)
 
   useEffect(() => {
     if (token) {
       const user = getDecodedToken()
       setCurrentUserId(user.user_id)
       setCurrentUserUsername(user.username)
+      getUserBookmarks(user.user_id)
     }    
   }, [])
 
@@ -72,6 +73,20 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
       {user_id, chirp_id}
     )
     console.log(bookmark)
+    getUserBookmarks(currentUserId)
+  }
+
+  const getUserBookmarks = async (user_id) => {
+    const bookmarks = await ApiRequest.getBookmarkedChirpsByUser(
+      { user_id }
+    )
+    console.log(bookmarks.data.data)
+    setCurrentUsersBookmarks(bookmarks.data.data)
+  }
+
+  const deleteBookmarkAndUpdate = (chirp_id, user_id) => {
+    deleteChirpBookmark(chirp_id, user_id)
+    getUserBookmarks()
   }
 
   return (
@@ -93,12 +108,19 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
           onClick={() => deleteChirp(chirp.id)}
         >Delete</button>
       }
-      {token && 
-        <button
-          id="bookmark-icon"
-          onClick={() => bookmarkChirp(chirp.id)}
-        >Bookmark</button>
+
+      {token && currentUsersBookmarks &&
+        (currentUsersBookmarks.some((bookmark) => bookmark.id === chirp.id) ? (
+          <button id="bookmark-icon" onClick={() => deleteBookmarkAndUpdate(chirp.id, currentUserId)}>
+            Remove Bookmark
+          </button>
+        ) : (
+          <button id="bookmark-icon" onClick={() => bookmarkChirp(chirp.id)}>
+            Bookmark
+          </button>
+        ))
       }
+
       <div className="user-info">
         <div 
           className="avatar"

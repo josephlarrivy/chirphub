@@ -7,9 +7,13 @@ import ChirpFeedItem from "./ChirpFeedItem";
 import PostChirpForm from "../forms/PostChirpForm";
 import ApiRequest from "../common/api";
 import AddTagsToChirpForm from "../forms/AddTagsToChirpForm";
+import useLocalStorage from "../hooks/useLocalStorage";
+
 
 const Feed = () => {
 
+  const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage("token");
+  const [currentUserId, setCurrentUserId] = useState(null)
   const [chirps, setChirps] = useState(null)
   const [postPhase, setPostPhase] = useState('chirp')
 
@@ -27,6 +31,15 @@ const Feed = () => {
     } 
   };
 
+  const deleteChirpBookmark = async (chirpId, userId) => {
+    const chirp_id = chirpId
+    const user_id = userId
+    const bookmark = await ApiRequest.removeBookmark(
+      { user_id, chirp_id }
+    )
+    console.log(bookmark)
+    getChirps()
+  }
 
   useEffect(() => {
     getChirps()
@@ -81,6 +94,7 @@ const Feed = () => {
             key={chirp.id}
             chirp={chirp}
             deleteChirp={deleteChirp}
+            deleteChirpBookmark={deleteChirpBookmark}
           />
         );
       })}

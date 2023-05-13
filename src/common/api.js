@@ -114,6 +114,12 @@ class ApiRequest {
     )
   }
 
+  static async removeBookmark(data) {
+    return (
+      await this.makeRequest('post', '/removeBookmark', null, data)
+    )
+  }
+
 }
 
 

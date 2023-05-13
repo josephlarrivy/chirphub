@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ApiRequest from "../common/api";
 import ChirpFeedItem from "./ChirpFeedItem";
+import useLocalStorage from "../hooks/useLocalStorage";
+
 
 import '../styles/ChirpsByTag.css'
 
 const ChirpsByTag = () => {
 
+  const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage("token");
+  const [currentUserId, setCurrentUserId] = useState(null)
   const tagId = useParams()
   const navigate = useNavigate()
   const [chirps, setChirps] = useState(null)
@@ -19,6 +23,7 @@ const ChirpsByTag = () => {
     console.log(dbChirps)
     setChirps(dbChirps.data.data)
   }
+  
 
   const getAllOtherTags = async () => {
     const dbTags = await ApiRequest.getAllTagsAsObjects()
@@ -32,8 +37,18 @@ const ChirpsByTag = () => {
       { 'chirp_id': chirpId}
     );
     getChirps();
+    }
+  };
+
+  const deleteChirpBookmark = async (chirpId, userId) => {
+    const chirp_id = chirpId
+    const user_id = userId
+    const bookmark = await ApiRequest.removeBookmark(
+      { user_id, chirp_id }
+    )
+    console.log(bookmark)
+    getChirps(currentUserId)
   }
-};
 
 
   useEffect(() => {
@@ -74,6 +89,7 @@ const ChirpsByTag = () => {
             key={chirp.id}
             chirp={chirp}
             deleteChirp={deleteChirp}
+            deleteChirpBookmark={deleteChirpBookmark}
           />
         )
       })}
