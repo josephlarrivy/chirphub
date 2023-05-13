@@ -80,9 +80,16 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
       }}
       >
       {currentUserUsername === chirp.username &&
+      <>
         <button
           id='chirp-feed-item-delete-button'
-          onClick={() => deleteChirp(chirp.id)}>X</button>
+          onClick={() => deleteChirp(chirp.id)}
+        >Delete</button>
+        <button
+          id="bookmark-icon"
+        >Bookmark</button>
+      </>
+        
       }
       <div className="user-info">
         <div 

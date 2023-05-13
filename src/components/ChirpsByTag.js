@@ -44,7 +44,7 @@ const ChirpsByTag = () => {
   return (
     <div id="feed-by-tags-inner-container">
       <div id="list-of-tags-container">
-        <h3>Click a tag to see chirps with that tag</h3>
+        <h3>Select a tag to see chirps</h3>
         {tagsList && tagsList.map(tag => {
           console.log(tagId)
           console.log(tag.tagId)

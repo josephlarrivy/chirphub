@@ -49,26 +49,32 @@ const Feed = () => {
 
   return (
     <div id="feed-inner-container">
-      {postPhase === 'chirp' ? (
-        <div id="post-chirp-form-container-chirp">
-          <PostChirpForm
-            postPhase={postPhase}
-            setPostPhase={setPostPhase}
-          />
-        </div>
-      ) : postPhase === 'tag' ? (
-        <div id="post-chirp-form-container-tag">
-          <AddTagsToChirpForm
-            postPhase={postPhase}
-            setPostPhase={setPostPhase}
-            getChirps={getChirps}
-          />
-        </div>
-      ) : (
-      <div id="post-chirp-form-container-transition">
-        <></>
+      <div className="post-chirp-form-container">
+        {postPhase === 'chirp' ? (
+          <div id="post-chirp-form-container-chirp">
+            <PostChirpForm
+              postPhase={postPhase}
+              setPostPhase={setPostPhase}
+            />
+          </div>
+        ) : postPhase === 'tag' ? (
+          <div id="post-chirp-form-container-tag">
+            <AddTagsToChirpForm
+              postPhase={postPhase}
+              setPostPhase={setPostPhase}
+              getChirps={getChirps}
+            />
+          </div>
+        ) : (
+          <div id="post-chirp-form-container-transition">
+            {/* <AddTagsToChirpForm
+              postPhase={postPhase}
+              setPostPhase={setPostPhase}
+              getChirps={getChirps}
+            /> */}
+          </div>
+        )}
       </div>
-      )}
       {chirps && chirps.map((chirp) => {
         return (
           <ChirpFeedItem

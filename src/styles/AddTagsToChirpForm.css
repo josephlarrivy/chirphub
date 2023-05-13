@@ -3,8 +3,8 @@
     height: 280px;
     margin-bottom: 30px;
     background-color: #ededed;
-    text-align: center;
-    
+    transition: all 1s ease-in-out;
+
     animation: fade-in;
     animation-duration: 1s;
 }
@@ -44,8 +44,9 @@
 }
 
 #add-tags-to-chirp-form-text {
-    padding-top: 20px;
+    padding-top: 40px;
     font-size: 20px;
+    margin-top: -20px;
 }
 
 #chirp-form-tag-input-one {

@@ -40,7 +40,11 @@
 
 .chirp-form-user-info-text .chirp-form-timestamp {
     width: 500px;
-    /* background-color: red; */
+    padding: 0px;
+    margin-top: -10px;
+    /* margin-bottom: 0px; */
+    font-size: 12px;
+    color: #5F7470;
 }
 
 .chirp-form-main #chirp-form-url-input {
@@ -136,3 +140,4 @@
 #add-tags-to-chirp-form-area {
     text-align: center;
 }
+

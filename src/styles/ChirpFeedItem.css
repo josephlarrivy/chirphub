@@ -10,9 +10,9 @@
 #chirp-feed-item-delete-button {
     margin: 10px 20px -30px;
     float: right;
-    width: 40px;
+    width: 60px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
     color: #5F7470;
@@ -27,14 +27,44 @@
 }
 
 #chirp-feed-item-container #chirp-feed-item-delete-button:hover {
-    width: 40px;
+    width: 60px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
     color: #5F7470;
     box-shadow: 2px 2px 2px #5F7470;
 }
+
+#bookmark-icon {
+    margin: 10px 0px -30px;
+    float: right;
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #EDEDED;
+    color: #5F7470;
+
+    transition: all 0.3s ease-in-out;
+}
+
+#chirp-feed-item-container:hover #bookmark-icon {
+    background-color: white;
+    color: #5F7470;
+}
+
+#chirp-feed-item-container:hover #bookmark-icon:hover {
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: #5F7470;
+    box-shadow: 2px 2px 2px #5F7470;
+}
+
 
 #chirp-feed-item-container:hover {
     background-color: #ededed;
