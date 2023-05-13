@@ -35,7 +35,6 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
     return date.toLocaleString();
   }
 
-
   const addLikeToChirp = async () => {
     if (likesButtonStatus === 'on') {
       const addLikeToChirp = await ApiRequest.likeChirp(
@@ -66,6 +65,15 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
     // console.log(`Hovering: ${isHovered ? "Yes" : "No"}`);
   };
 
+  const bookmarkChirp = async (chirpId) => {
+    const chirp_id = chirpId
+    const user_id = currentUserId
+    const bookmark = await ApiRequest.addBookmark(
+      {user_id, chirp_id}
+    )
+    console.log(bookmark)
+  }
+
   return (
     <div
       key={chirp.id}
@@ -80,16 +88,16 @@ const ChirpFeedItem = ({chirp, deleteChirp}) => {
       }}
       >
       {currentUserUsername === chirp.username &&
-      <>
         <button
           id='chirp-feed-item-delete-button'
           onClick={() => deleteChirp(chirp.id)}
         >Delete</button>
+      }
+      {token && 
         <button
           id="bookmark-icon"
+          onClick={() => bookmarkChirp(chirp.id)}
         >Bookmark</button>
-      </>
-        
       }
       <div className="user-info">
         <div 

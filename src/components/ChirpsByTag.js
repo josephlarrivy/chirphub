@@ -22,7 +22,7 @@ const ChirpsByTag = () => {
 
   const getAllOtherTags = async () => {
     const dbTags = await ApiRequest.getAllTagsAsObjects()
-    console.log(dbTags.data.data)
+    // console.log(dbTags.data.data)
     setTagsList(dbTags.data.data)
   }
 
@@ -46,8 +46,8 @@ const ChirpsByTag = () => {
       <div id="list-of-tags-container">
         <h3>Select a tag to see chirps</h3>
         {tagsList && tagsList.map(tag => {
-          console.log(tagId)
-          console.log(tag.tagId)
+          // console.log(tagId)
+          // console.log(tag.tagId)
           if (tagId.tagId === tag.tagId) {
             return (
               <button

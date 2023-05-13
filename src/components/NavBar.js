@@ -26,42 +26,42 @@ const NavBar = () => {
             ? "nav-item active"
             : "nav-item"
           }>Tags</Link>
-        <Link 
+        {/* <Link 
           to="/notifications" 
           className={location.pathname === "/notifications" 
             ? "nav-item active" 
             : "nav-item"
-          }>Notifications</Link>
-        <Link 
+          }>Notifications</Link> */}
+        {/* <Link 
           to="/messages" 
           className={location.pathname === "/messages" 
             ? "nav-item active" 
             : "nav-item"
-          }>Messages</Link>
-        <Link 
+          }>Messages</Link> */}
+        {/* <Link 
           to="/lists" 
           className={location.pathname === "/lists" 
             ? "nav-item active" 
             : "nav-item"
-          }>Lists</Link>
+          }>Lists</Link> */}
         <Link 
           to="/bookmarks" 
           className={location.pathname === "/bookmarks" 
             ? "nav-item active" 
             : "nav-item"
           }>Bookmarks</Link>
-        <Link 
+        {/* <Link 
           to="/profile" 
           className={location.pathname === "/profile" 
             ? "nav-item active" 
             : "nav-item"
-          }>Profile</Link>
-        <Link 
+          }>Profile</Link> */}
+        {/* <Link 
           to="/more" 
           className={location.pathname === "/more" 
             ? "nav-item active" 
             : "nav-item"
-          }>More</Link>
+          }>More</Link> */}
         <Link
           to="/logout"
           className={location.pathname === "/logout"
@@ -81,47 +81,53 @@ const NavBar = () => {
             : "nav-item"
           }>Home</Link>
         <Link
+          to="/tag/:tagId"
+          className={location.pathname.startsWith("/tag")
+            ? "nav-item active"
+            : "nav-item"
+          }>Tags</Link>
+        {/* <Link
           to="/explore"
           className={location.pathname === "/explore"
             ? "nav-item active"
             : "nav-item"
-          }>Explore</Link>
-        <Link
+          }>Explore</Link> */}
+        {/* <Link
           to="/notifications"
           className={location.pathname === "/notifications"
             ? "nav-item active"
             : "nav-item"
-          }>Notifications</Link>
-        <Link
+          }>Notifications</Link> */}
+        {/* <Link
           to="/messages"
           className={location.pathname === "/messages"
             ? "nav-item active"
             : "nav-item"
-          }>Messages</Link>
-        <Link
+          }>Messages</Link> */}
+        {/* <Link
           to="/lists"
           className={location.pathname === "/lists"
             ? "nav-item active"
             : "nav-item"
-          }>Lists</Link>
-        <Link
+          }>Lists</Link> */}
+        {/* <Link
           to="/bookmarks"
           className={location.pathname === "/bookmarks"
             ? "nav-item active"
             : "nav-item"
-          }>Bookmarks</Link>
-        <Link
+          }>Bookmarks</Link> */}
+        {/* <Link
           to="/profile"
           className={location.pathname === "/profile"
             ? "nav-item active"
             : "nav-item"
-          }>Profile</Link>
-        <Link
+          }>Profile</Link> */}
+        {/* <Link
           to="/more"
           className={location.pathname === "/more"
             ? "nav-item active"
             : "nav-item"
-          }>More</Link>
+          }>More</Link> */}
         <Link
           to="/register"
           className={location.pathname === "/register"

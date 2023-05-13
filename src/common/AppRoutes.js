@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import Bookmarks from "../components/Bookmarks";
 import ChirpsByTag from "../components/ChirpsByTag";
 import Feed from "../components/Feed";
 import NavBar from "../components/NavBar";
@@ -38,6 +39,9 @@ const AppRoutes = () => {
             /> */}
             <Route exact path="/tag/:tagId"
               element={<ChirpsByTag />}
+            />
+            <Route exact path="/bookmarks"
+              element={<Bookmarks />}
             />
           </Routes>
         </div>

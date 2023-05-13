@@ -102,7 +102,17 @@ class ApiRequest {
     )
   }
 
+  static async addBookmark(data) {
+    return (
+      await this.makeRequest('post', '/addBookmark', null, data)
+    )
+  }
 
+  static async getBookmarkedChirpsByUser(data) {
+    return (
+      await this.makeRequest('post', '/getBookmarkedChirpsByUser', null, data)
+    )
+  }
 
 }
 
