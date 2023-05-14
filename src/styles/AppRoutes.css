@@ -3,6 +3,7 @@
     height: 100vh;
     display: flex;
     flex-direction: row;
+    overflow-x: hidden;
 }
 
 #nav-outer-container {

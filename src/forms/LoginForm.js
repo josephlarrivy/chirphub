@@ -8,23 +8,34 @@ import "../styles/LoginForm.css";
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null)
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] =
     useLocalStorage("token");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await ApiRequest.login({
-      username,
-      password,
-    });
-    if (response.status === 200) {
+    try {
+      const response = await ApiRequest.login({
+        username,
+        password,
+      });
       setTokenValue(response.data.token);
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    } catch (e) {
+      console.log(e);
+      navigate('/login');
+      if (e.response && e.response.data && e.response.data.error) {
+        setError(e.response.data.error);
+      } else {
+        setError('Invalid username/password combination');
+      }
     }
-    setTimeout(() => {
-      navigate("/");
-    }, 1000);
   };
+
+    
 
   return (
     <div id="login-form-main-container">
@@ -48,6 +59,8 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
+        <br />
+        {error && <p>{error}</p>}
         <br />
         <button className="login-submit-button" type="submit">
           Log In

@@ -29,23 +29,28 @@ const RegisterForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await ApiRequest.register({
-      username,
-      displayname,
-      avatarColor,
-      password,
-    });
-    console.log(response)
-    if (response.data = 'Username taken') {
-      navigate('/register')
-      setError('username already taken - pick another')
-    } else {
-      setTokenValue(response.data.token)
+    try {
+      const response = await ApiRequest.register({
+        username,
+        displayname,
+        avatarColor,
+        password,
+      });
+      setTokenValue(response.data.token);
       setTimeout(() => {
-        navigate('/')
-      }, 1000)
+        navigate('/');
+      }, 1000);
+    } catch (e) {
+      console.log(e);
+      navigate('/register');
+      if (e.response && e.response.data && e.response.data.error) {
+        setError(e.response.data.error);
+      } else {
+        setError('Username taken. Please pick another.');
+      }
     }
   };
+
 
   const handleColorChange = (color) => {
     setAvatarColor(color.hex);

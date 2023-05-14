@@ -8,6 +8,7 @@ class ApiRequest {
   static async makeRequest(method, endpoint, token = null, data = {}) {
     try {
       const headers = { authorization: `Bearer ${token}` }
+      console.log(`${BASE_URL}${endpoint}`)
       return (
         await axios({ method, url: `${BASE_URL}${endpoint}`, data, headers })
       );
