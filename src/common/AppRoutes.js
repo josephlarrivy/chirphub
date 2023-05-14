@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Routes, Route, BrowserRouter, useLocation } from 'react-router-dom'
 import Bookmarks from "../components/Bookmarks";
 import ChirpsByTag from "../components/ChirpsByTag";
 import Feed from "../components/Feed";
@@ -10,13 +10,19 @@ import LogoutForm from "../forms/LogoutForm";
 import RegisterForm from "../forms/RegisterForm";
 
 
+
 import '../styles/AppRoutes.css'
 
 const AppRoutes = () => {
 
+  const reload = () => {
+    setTimeout(() => {
+      window.location.reload()
+    }, 10)
+  }
+
   return (
     <div id="page-main-container">
-      <BrowserRouter>
         <div id="nav-outer-container">
           <NavBar />
         </div>
@@ -26,13 +32,13 @@ const AppRoutes = () => {
               element={<Feed />}
             />
             <Route exact path="/register"
-              element={<RegisterForm />}
+              element={<RegisterForm reload={reload}/>}
             />
             <Route exact path="/login"
-              element={<LoginForm />}
+              element={<LoginForm reload={reload}/>}
             />
             <Route exact path="/logout"
-              element={<LogoutForm />}
+              element={<LogoutForm reload={reload}/>}
             />
             {/* <Route exact path="/addTagsToChirpForm"
               element={<AddTagsToChirpForm />}
@@ -61,7 +67,6 @@ const AppRoutes = () => {
         </div>
 
 
-      </BrowserRouter>
     </div>
   )
 }

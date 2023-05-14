@@ -9,15 +9,21 @@ const NavBar = () => {
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] =
     useLocalStorage("token");
   const location = useLocation();
-  const [isLoggedIn, setIsLoggedIn] = useState(!!token);
-  const navigate = useNavigate()
+  const [loginStatus, setLoginStatus] = useState(null)
 
   useEffect(() => {
-    setIsLoggedIn(!!token);
-  }, [token]);
+    const storedToken = getToken()
+    console.log(storedToken)
+    if (storedToken !== null) {
+      setLoginStatus(true)
+    } else {
+      setLoginStatus(false)
+    }
+  }, []);
 
 
-  if (isLoggedIn) {
+
+  if (loginStatus === true) {
     return (
       <div id="nav-inner-container">
         <h1>ChirpHub</h1>

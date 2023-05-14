@@ -32,7 +32,7 @@ const useLocalStorage = (key) => {
       const parsedValue = JSON.parse(decodedValue);
       return parsedValue;
     } catch (error) {
-      console.error('Error decoding token:', error);
+      console.error('token not found');
       return null;
     }
   };

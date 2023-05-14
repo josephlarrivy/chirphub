@@ -80,7 +80,7 @@ const ChirpFeedItem = ({chirp, deleteChirp, deleteChirpBookmark}) => {
     const bookmarks = await ApiRequest.getBookmarkedChirpsByUser(
       { user_id }
     )
-    console.log(bookmarks.data.data)
+    // console.log(bookmarks.data.data)
     setCurrentUsersBookmarks(bookmarks.data.data)
   }
 

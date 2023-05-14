@@ -6,7 +6,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 import '../styles/RegisterForm.css'
 
-const RegisterForm = () => {
+const RegisterForm = ({reload}) => {
   const [username, setUsername] = useState("");
   const [displayname, setDisplayname] = useState("");
   const [avatarColor, setAvatarColor] = useState("#000000");
@@ -38,6 +38,7 @@ const RegisterForm = () => {
       });
       setTokenValue(response.data.token);
       setTimeout(() => {
+        reload()
         navigate('/');
       }, 1000);
     } catch (e) {

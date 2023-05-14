@@ -5,7 +5,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 import "../styles/LoginForm.css";
 
-const LoginForm = () => {
+const LoginForm = ({reload}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null)
@@ -22,6 +22,7 @@ const LoginForm = () => {
       });
       setTokenValue(response.data.token);
       setTimeout(() => {
+        reload()
         navigate('/');
       }, 1000);
     } catch (e) {
@@ -41,7 +42,7 @@ const LoginForm = () => {
     <div id="login-form-main-container">
       <form onSubmit={handleSubmit}>
         <label className="input-label">
-          Username:
+          <p>Username:</p>
           <input
             type="text"
             value={username}
@@ -51,7 +52,7 @@ const LoginForm = () => {
         </label>
         <br />
         <label className="input-label">
-          Password:
+          <p>Password:</p>
           <input
             type="password"
             value={password}

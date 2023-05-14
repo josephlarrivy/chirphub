@@ -4,24 +4,25 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 import '../styles/LogoutForm.css'
 
-const LogoutForm = () => {
+const LogoutForm = ({reload}) => {
 
   const [token, setTokenValue, removeToken, getToken, getDecodedToken] = useLocalStorage('token');
   const navigate = useNavigate()
 
   useEffect(() => {
     const token = getToken()
-    console.log(token)
+    // console.log(token)
 
     const decodedToken = getDecodedToken()
-    console.log(decodedToken)
+    // console.log(decodedToken)
   }, [])
 
   const logOut = async () => {
     await removeToken()
     setTimeout(() => {
+      reload()
       navigate('/')
-    }, 400)
+    }, 1000)
   }
 
   return (
