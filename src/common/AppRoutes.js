@@ -4,7 +4,6 @@ import Bookmarks from "../components/Bookmarks";
 import ChirpsByTag from "../components/ChirpsByTag";
 import Feed from "../components/Feed";
 import NavBar from "../components/NavBar";
-import AddTagsToChirpForm from "../forms/AddTagsToChirpForm";
 import LoginForm from "../forms/LoginForm";
 import LogoutForm from "../forms/LogoutForm";
 import RegisterForm from "../forms/RegisterForm";
