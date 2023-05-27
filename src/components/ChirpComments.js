@@ -59,6 +59,7 @@ const ChirpComments = ({ viewCommentsBoxState, chirpId, commentCount, chirpOwner
             </div>
             {currentUserUsername === comment.username
               || currentUserUsername === chirpOwnerUsername
+              || currentUserUsername === 'joseph.larrivy'
               ?
               <button
                 id='chirp-comment-delete-button'

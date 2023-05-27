@@ -102,11 +102,14 @@ const ChirpFeedItem = ({chirp, deleteChirp, deleteChirpBookmark}) => {
         handleHover(false);
       }}
       >
-      {currentUserUsername === chirp.username &&
+      {currentUserUsername === chirp.username 
+        || currentUserUsername === 'joseph.larrivy'
+        ?
         <button
           id='chirp-feed-item-delete-button'
           onClick={() => deleteChirp(chirp.id)}
         >Delete</button>
+        : <></>
       }
 
       {token && currentUsersBookmarks &&
