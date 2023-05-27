@@ -61,7 +61,7 @@ const ChirpComments = ({ viewCommentsBoxState, chirpId, commentCount, chirpOwner
               || currentUserUsername === chirpOwnerUsername
               ?
               <button
-                id='chirp-feed-item-delete-button'
+                id='chirp-comment-delete-button'
                 onClick={() => deleteComment(comment.id)}
               >Delete</button>
               : <></>
