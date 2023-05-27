@@ -28,7 +28,7 @@ const ChirpFeedItem = ({chirp, deleteChirp, deleteChirpBookmark}) => {
       setCurrentUserId(user.user_id)
       setCurrentUserUsername(user.username)
       getUserBookmarks(user.user_id)
-    }    
+    }
   }, [])
 
   function formatTimestamp(timestamp) {
@@ -178,6 +178,7 @@ const ChirpFeedItem = ({chirp, deleteChirp, deleteChirpBookmark}) => {
           viewCommentsBoxState={viewCommentsBoxState}
           chirpId={chirp.id}
           commentCount={commentCount}
+          chirpOwnerUsername={chirp.username}
         />
       </div>
     </div>
